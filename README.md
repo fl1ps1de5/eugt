@@ -4,6 +4,6 @@
 
 This GitHub repo will contain most of the work that is done going towards my thesis. 
 
-I will be sure to update this ReadMe as the repo grows, but for now I am just about to add some python code, to give visibility for Fabio.
+I will be sure to update this ReadMe as the repo grows, but for now it is acting as a placeholder.
 
 Over & out!
