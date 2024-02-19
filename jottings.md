@@ -7,5 +7,5 @@
 **Buzzwords**
 
 - Differentiable simulators
-- Single processes (mujocu)
+- Single vs multi processes (mujocu vs isaac gym)
 - Leveraging parallel simulation
