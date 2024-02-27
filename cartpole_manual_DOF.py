@@ -45,7 +45,6 @@ asset_options.default_dof_drive_mode = gymapi.DOF_MODE_POS
 
 cartpole_asset = gym.load_asset(sim, asset_root, asset_file, asset_options)
 
-
 # get asset descriptors
 
 dof_names = gym.get_asset_dof_names(cartpole_asset) # array of DOF names
