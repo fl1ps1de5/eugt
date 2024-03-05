@@ -46,7 +46,7 @@ if viewer is None:
     raise Exception("Failed to create viewer")
 
 # load ball asset
-asset_root = "./assets"
+asset_root = "../assets"
 asset_file = "urdf/cartpole.urdf"
 
 asset_options = gymapi.AssetOptions()
@@ -63,7 +63,7 @@ pose.p.z = 2.0
 pose.r = gymapi.Quat(0.0, 0.0, 0.0, 1.0)
 
 # set up the env grid
-num_envs = 6
+num_envs = 20
 num_per_row = int(np.sqrt(num_envs))
 env_spacing = 2.0
 env_lower = gymapi.Vec3(0.5 * -env_spacing, -env_spacing, 0.0)
@@ -102,8 +102,7 @@ while not gym.query_viewer_has_closed(viewer):
     
     num_dofs = gym.get_sim_dof_count(sim)
 
-    actions = torch.zeros(num_dofs, dtype=torch.float32, device="cuda:0")
-    actions[2] = 0.5 
+    actions =  1.0 - 2.0 * torch.rand(num_dofs, dtype=torch.float32, device="cuda:0")
 
     # must unwrap before we feed it into the next function
     forces = gymtorch.unwrap_tensor(actions)
