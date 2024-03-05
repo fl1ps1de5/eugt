@@ -34,7 +34,7 @@ gym.subscribe_viewer_keyboard_event(viewer, gymapi.KEY_LEFT, "left_lowerDOF")
 gym.subscribe_viewer_keyboard_event(viewer, gymapi.KEY_RIGHT, "right_upperDOF")
 
 # loading assets
-asset_root = "./assets" 
+asset_root = "../assets" 
 asset_file = "urdf/cartpole.urdf"
 #asset_file = "urdf/franka_description/robots/franka_panda.urdf" 
 
