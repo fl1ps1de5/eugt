@@ -1,3 +1,4 @@
+import torch
 import numpy as np
 
 def mutate(policy, sigma=0.1):
