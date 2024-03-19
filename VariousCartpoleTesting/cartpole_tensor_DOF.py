@@ -15,7 +15,7 @@ sim_params = gymapi.SimParams()
 sim_params.up_axis = gymapi.UP_AXIS_Z
 sim_params.gravity = gymapi.Vec3(0.0, 0.0, -9.81)
 if args.physics_engine == gymapi.SIM_PHYSX:
-    sim_params.substeps = 1
+    sim_params.substeps = 1 
     sim_params.physx.solver_type = 1
     sim_params.physx.num_position_iterations = 4
     sim_params.physx.num_velocity_iterations = 1
