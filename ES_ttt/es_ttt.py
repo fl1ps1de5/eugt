@@ -6,7 +6,7 @@ import time
 import scipy.stats as ss
 
 from envs import TicTacToeEnv
-from model import simpleMLP
+from model import simpleMLP, ES
 
 NOISE_STD = 0.05
 POPULATIONSIZE = 100
@@ -61,7 +61,7 @@ def evaluate_noisy_NN(noise, nn, env):
 def worker(param_queue, output_queue):
 
     env = TicTacToeEnv()
-    actor = simpleMLP(env.observation_space, env.action_space)
+    actor = ES(env.observation_space, env.action_space)
     
     while True:
         actor_params = param_queue.get()
@@ -95,7 +95,7 @@ def main():
 
     env = TicTacToeEnv()
 
-    actor = simpleMLP(env.observation_space, env.action_space)
+    actor = ES(env.observation_space, env.action_space)
     optimizer = optim.Adam(actor.parameters(), lr = LEARNINGRATE)
 
     # create queues so I can pass variables between processes
@@ -115,6 +115,7 @@ def main():
         batch_noise = []
         batch_reward = []
 
+        # store params in param queue
         for _ in range(POPULATIONSIZE):
             param_queue.put(actor.state_dict())
 
@@ -122,13 +123,13 @@ def main():
         # get results from each worker
         for _ in range(POPULATIONSIZE):
             
-            r, s = output_queue.get()
+            rew, sed = output_queue.get()
 
-            np.random.seed(s)
+            np.random.seed(sed)
             noise = generate_noise(actor)
             batch_noise.append(noise)
 
-            batch_reward.append(r)
+            batch_reward.append(rew)
         
 
         avg_reward = np.round(np.mean(batch_reward), 2)
@@ -138,6 +139,7 @@ def main():
 
         th_update = []
         optimizer.zero_grad()
+       
         # for each actor's parameter, and for each noise in the batch, update it by the reward * the noise value
         for idx, p in enumerate(actor.parameters()):
             upd_weights = np.zeros(p.data.shape)

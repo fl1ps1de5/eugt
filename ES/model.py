@@ -12,7 +12,7 @@ class simpleMLP(nn.Module):
     def forward(self, x):
         x = nn.functional.relu(self.linear1(x))
         x = nn.functional.relu(self.linear2(x))
-        o = self.out(x)
+        o = torch.tanh(self.out(x))
         return o
     
     def count_parameters(self):
