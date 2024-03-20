@@ -12,7 +12,7 @@ This dir contains files that represent my first exploration into the usage and f
 
 * cartpole_manual_DOF.py - explores how the user can manually apply forces to a DOF. Allows the user to use the keypad to move the Cartpole, and spacebar to change the DOF being controlled.
 
-(the other two files are irrelevant and should be removed)
+  (the other two files are irrelevant and should be removed)
 
 2. ES_gym
 
