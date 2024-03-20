@@ -2,15 +2,13 @@
 
 ## INFO4001
 
-This repo currently contains 3 files:
+This repo currently contains 3 directories:
 
-1. gym_tut.py -> This file can be ignored, as it was simply a space for me to test arbitary features of Isaac Gym
+1. VariousGymTesting
 
-2. cartpole_tutorial.py -> Simulates a cartpole moving back and forth and applying force to the DOF's automatically (note DOFs do not behave according to physics)
+This dir contains files that represent my first exploration into the usage and functionality of isaac gym. 
 
-3. cartpole_manual_DOF.py -> Allows the cartpole DOF's to be manually controlled using the LEFT and RIGHT arrow key. SPACEBAR can be used to change which DOF is being controlled. (note DOFs do not behave according to physics)
+cartpole_tensor_DOF.py - explores how forces can be applied to a DOF using Isaac Gym Tensor API, adds random forces and then simulates the movement of a Cartpole
+cartpole_manual_DOF.py - explores how the user can manually apply forces to a DOF. Allows the user to use the keypad to move the Cartpole, and spacebar to change the DOF being controlled.
 
-
-Further implementations will be similar to file (3), however the DOF "cart_to_pole" will act according to physics based movements from the DOF "slider_to_cart". 
-
-File (3) is my most recent work and shows that I am able to manually apply forces to an actor within an IsaacGym environment.
+2. 
